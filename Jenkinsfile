@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/emirhanaydindevops/web.git'
+        git branch: 'main', credentialsId: 'mygithub', url: 'https://github.com/emirhanaydindevops/web.git'
       }
     }
 
