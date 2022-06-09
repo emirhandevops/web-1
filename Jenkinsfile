@@ -23,11 +23,14 @@ pipeline {
       }
     }
 
-    stage('Push Image') {
+   stage('Pushing Image') {
+      environment {
+               registryCredential = 'dockerhublogin'
+           }
       steps{
         script {
-          docker.withRegistry( "" ) {
-            dockerImage.push()
+          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+            dockerImage.push("latest")
           }
         }
       }
