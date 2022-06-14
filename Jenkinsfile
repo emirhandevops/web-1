@@ -43,10 +43,6 @@ pipeline {
         }
       }
     }
-
-  }
-
-}
 pipeline {
 
   environment {
@@ -65,3 +61,4 @@ pipeline {
         }
     }
 }
+
