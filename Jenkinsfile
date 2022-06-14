@@ -1,6 +1,24 @@
 pipeline {
 
   environment {
+	def scannerHome = tool 'SonarQubeScanner'
+  }
+
+  agent any
+
+  stages {
+        stage('SonarQube Code Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test -Dsonar.projectName=test -Dsonar.projectVersion=1.0"
+                }
+            }
+        }
+    }
+}
+pipeline {
+
+  environment {
     registry = "emirhanaydin61/web"
     dockerImage = ""
   }
